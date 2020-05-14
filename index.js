@@ -9,8 +9,19 @@ bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
 });
 
+// bot.on('message', msg => {
+
+//   if (msg.content === 'YoBig whats 9+10?)
+// });
+
 bot.on('message', msg => {
-  if (msg.content === 'ping') {
+  var args = msg.content.split();
+
+  if (args[0].toLowerCase() === 'yobig') {
+    msg.reply("C'est moi!");
+    return;
+  }
+  if (msg.content === 'YoBig whats 9 + 10') {
     msg.reply('pong');
     msg.channel.send('pong');
 
