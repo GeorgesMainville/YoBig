@@ -7,8 +7,6 @@ bot.login(TOKEN);
 
 bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
-  console.info('9+10');
-
 });
 
 bot.on('message', msg => {
@@ -30,7 +28,6 @@ bot.on('message', msg => {
     case 'salutation':
       msg.reply('salut!');
   }
-
 });
 
 function parseCommand(msg) {
