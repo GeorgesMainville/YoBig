@@ -7,13 +7,18 @@ bot.login(TOKEN);
 
 bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
+  console.info('9+10');
+
 });
 
 bot.on('message', msg => {
   let args = parseCommand(msg);
   
+  if (msg.author.bot) {
+    return;
+  }
+
   if (args == null || args.length < 1) {
-    console.info(args + ' under 1 element');
     return;
   }
 
@@ -31,12 +36,8 @@ bot.on('message', msg => {
 function parseCommand(msg) {
     var args = msg.content.split(' ');
       if (args[0].toLowerCase() !== 'yobig') {
-        console.info(args);
-        console.info('lowercase daddy');
         return;
       }
-
-      console.info(args + 'these are the args');
 
     return args;
 }
