@@ -14,20 +14,18 @@ class CalculatorCMD {
             // TODO: Make 9+10 return 21
         }
 
-        if (chaineOperation.length === 3) {
-            if (chaineOperation[0] == 9 && chaineOperation[2] == 10) {
-                msg.channel.send('21');
-                msg.channel.send('you stoopid');
-            } else {
-                let result = eval(chaineOperation.join(' '));
-                msg.channel.send(result);
-            }
-        }
-
+        if (chaineOperation.length === 3 && chaineOperation[0] == 9 && chaineOperation[2] == 10) {
+            msg.channel.send('21');
+            msg.channel.send('you stoopid');
+        } 
+        
         if (chaineOperation.length > 3) {
             let result = eval(chaineOperation.join(' '));
             msg.channel.send(result);
         }
+
+        let result = eval(chaineOperation.join(' '));
+        msg.channel.send(result);
     }
 
     // print(){} TODO
