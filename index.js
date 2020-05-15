@@ -27,7 +27,7 @@ bot.on('message', msg => {
   }
 
   switch (args[1]) {
-    case 'calc':
+    case "what's": case "whats": case 'calc':
       CalculatorCMD.execute(msg, args.slice(2));
   } 
 });
