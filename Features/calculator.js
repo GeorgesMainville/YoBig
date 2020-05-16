@@ -28,23 +28,18 @@ class CalculatorCMD {
         }
 
         if (this.chaineOperation.length === 1) {
-            this.print(eval(this.chaineOperation[0]));
+            this.print(eval(chaineOperation[0]));
             // TODO: Make 9+10 return 21
         }
 
-        if (this.chaineOperation.length === 3 && this.chaineOperation[0] == 9 && this.chaineOperation[2] == 10) {
-            this.print('21');
-            this.print('you stoopid');
-        }
-
-        if (this.chaineOperation.length >= 3) {
-            let result = eval(this.chaineOperation.join(' '));
-            this.print(result);
-        }
-
         if (this.chaineOperation.length === 3) {
-            let result = eval(this.chaineOperation.join(' '));
-            this.print(result);
+            if (this.chaineOperation[0] == 9 && this.chaineOperation[2] == 10) {
+                this.print('21');
+                this.print('you stoopid');
+            } else {
+                let result = eval(this.chaineOperation.join(' '));
+                this.print(result);
+            }
         }
     }
 }
