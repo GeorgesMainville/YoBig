@@ -1,4 +1,4 @@
-const CalculatorCMD = require('./Features/calculator')
+const CalculatorCMD = require('./Features/calculator');
 
 require('dotenv').config();
 const Discord = require('discord.js');
@@ -28,7 +28,7 @@ bot.on('message', msg => {
 
   switch (args[1]) {
     case "what's": case "whats": case 'calc':
-      CalculatorCMD.execute(msg, args.slice(2));
+      new CalculatorCMD(msg,args.slice(2)).execute();
   } 
 });
 
