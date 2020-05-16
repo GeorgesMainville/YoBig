@@ -1,3 +1,5 @@
+const CalculatorCMD = require('./Features/calculator');
+
 require('dotenv').config();
 const Discord = require('discord.js');
 const bot = new Discord.Client();
@@ -11,7 +13,7 @@ bot.on('ready', () => {
 
 bot.on('message', msg => {
   let args = parseCommand(msg);
-  
+
   if (msg.author.bot) {
     return;
   }
@@ -21,20 +23,20 @@ bot.on('message', msg => {
   }
 
   if (args.length == 1) {
-    msg.channel.send('YoBig'); // TODO Become a function;
+    msg.channel.send('Help'); // TODO Become a function;
   }
 
-  switch(args[1]) {
-    case 'salutation':
-      msg.reply('salut!');
-  }
+  switch (args[1]) {
+    case "what's": case "whats": case 'calc':
+      new CalculatorCMD(msg,args.slice(2)).execute();
+  } 
 });
 
 function parseCommand(msg) {
-    var args = msg.content.split(' ');
-      if (args[0].toLowerCase() !== 'yobig') {
-        return;
-      }
+  var args = msg.content.split(' ');
+  if (args[0].toLowerCase() !== 'yobig') {
+    return;
+  }
 
-    return args;
+  return args;
 }
