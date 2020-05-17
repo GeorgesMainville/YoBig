@@ -20,15 +20,16 @@ class CalculatorCMD {
     execute() {
 
         if (this.chaineOperation == null) {
+            this.print(this.help);
             return;
         }
 
         if (this.chaineOperation.length < 3 && this.chaineOperation.length !== 1) {
-            this.print(help);
+            this.print(this.help);
         }
 
         if (this.chaineOperation.length === 1) {
-            this.print(eval(chaineOperation[0]));
+            this.print(eval(this.chaineOperation[0]));
             // TODO: Make 9+10 return 21
         }
 
