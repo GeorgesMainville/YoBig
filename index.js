@@ -28,8 +28,11 @@ bot.on('message', msg => {
 
   switch (args[1]) {
     case "what's": case "whats": case 'calc':
-      new CalculatorCMD(msg,args.slice(2)).execute();
-  } 
+      new CalculatorCMD(msg, args.slice(2)).execute();
+
+    default:
+      msg.channel.send('Type help command to see the list of available commands');
+  }
 });
 
 function parseCommand(msg) {
