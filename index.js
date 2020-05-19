@@ -4,8 +4,14 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
+const TOKENDEV = process.env.TOKENDEV;
 
-bot.login(TOKEN);
+if(process.argv[2] == "d" ) {
+  bot.login(TOKENDEV);
+}
+else {
+  bot.login(TOKEN);
+}
 
 bot.on('ready', () => {
   console.info(`Logged in as ${bot.user.tag}!`);
@@ -23,26 +29,27 @@ bot.on('message', msg => {
   }
 
   if (args.length == 1) {
-    showHelp();
+    showHelp(msg);
+    return;
   }
 
   switch (args[1]) {
-    case "", "h" ,"help":
-      showHelp();
-      return;
-    case "what's": case "whats": case 'calc':
+    case '': case 'h': case 'help':
+      showHelp(msg);
+      break;
+    case "what's": case 'whats': case 'calc':
       new CalculatorCMD(msg, args.slice(2)).execute();
-      return;
+      break;
+      
     default:
       msg.channel.send('Type help command to see the list of available commands');
-      return;
   }
 });
 
-function showHelp() {
-  msg.channel.send("Hello sir! Here's what i can do! \n",
-                    "   ,h,help                 Show the help menu. \n",
-                    "   what's,whats,calc       Calculates an operation chain.");
+function showHelp(msg) {
+  msg.channel.send("Hello sir! Here's what i can do! \n" +
+                    "   help        Show the help menu. \n" +
+                    "   whats       Calculates an operation chain.");
 }
 
 function parseCommand(msg) {
