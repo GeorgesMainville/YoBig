@@ -19,15 +19,14 @@ class CalculatorCMD {
 
     calculer(calcul) {
         try {
-
-            let regex = new RegExp("^[0-9\\.\\+\\-\\*\\/\\%\\(\\)]*$");
-
-            if(calcul == '' || String(calcul).match(regex)) {
+            let regex = new RegExp("^[0-9\\.\\+\\-\\*\\/\\%\\(\\) ]*$");
+            
+            if(calcul == '' || !regex.test(calcul)) {
                 return this.help;
             }
 
             return eval(calcul); 
-            
+
         } catch (e) {
             return this.help;
         }
