@@ -32,7 +32,7 @@ describe('Calculator tests', function () {
       expect(calculator.counter).to.equal(1);
    });
 
-   it('Execute_WhenCalledWith3ValidArgs_PrintsResult', function (done) {
+   it('Execute_WhenCalledWith3ValidArgsAddition_PrintsResult', function (done) {
       // Arrange
       let expected = 20;
       let calculator = new CalculatorCMD(null, ['10', '+', '10']);
@@ -45,6 +45,91 @@ describe('Calculator tests', function () {
       expect(calculator.counter).to.equal(1);
       done();
    });
+
+   it('Execute_WhenCalledWith3ValidArgsMiltiplication_PrintsResult', function (done) {
+      // Arrange
+      let expected = 100;
+      let calculator = new CalculatorCMD(null, ['10', '*', '10']);
+
+      // Act
+      calculator.execute();
+
+      // Assert
+      expect(calculator.testValue).to.equal(expected);
+      expect(calculator.counter).to.equal(1);
+      done();
+   });
+
+   it('Execute_WhenCalledWith3ValidArgsDivision_PrintsResult', function (done) {
+      // Arrange
+      let expected = 1;
+      let calculator = new CalculatorCMD(null, ['10', '/', '10']);
+
+      // Act
+      calculator.execute();
+
+      // Assert
+      expect(calculator.testValue).to.equal(expected);
+      expect(calculator.counter).to.equal(1);
+      done();
+   });
+
+   it('Execute_WhenCalledWith3ValidArgsSubstraction_PrintsResult', function (done) {
+      // Arrange
+      let expected = 0;
+      let calculator = new CalculatorCMD(null, ['10', '-', '10']);
+
+      // Act
+      calculator.execute();
+
+      // Assert
+      expect(calculator.testValue).to.equal(expected);
+      expect(calculator.counter).to.equal(1);
+      done();
+   });
+
+   it('Execute_WhenCalledWith3ValidArgsModulo_PrintsResult', function (done) {
+      // Arrange
+      let expected = 0;
+      let calculator = new CalculatorCMD(null, ['2', '%', '1']);
+
+      // Act
+      calculator.execute();
+
+      // Assert
+      expect(calculator.testValue).to.equal(expected);
+      expect(calculator.counter).to.equal(1);
+      done();
+   });
+
+   it('Execute_WhenCalledWithValidArgsParenthesis_PrintsResult', function (done) {
+      // Arrange
+      let expected = 100;
+      let calculator = new CalculatorCMD(null, ['(10 * (5 + 5))']);
+
+      // Act
+      calculator.execute();
+
+      // Assert
+      expect(calculator.testValue).to.equal(expected);
+      expect(calculator.counter).to.equal(1);
+      done();
+   });
+
+   it('Execute_WhenCalledWith3ValidArgsNbVirgule_PrintsResult', function (done) {
+      // Arrange
+      let expected = 20.4;
+      let calculator = new CalculatorCMD(null, ['10.3', '+', '10,1']);
+
+      // Act
+      calculator.execute();
+
+      // Assert
+      expect(calculator.testValue).to.equal(expected);
+      expect(calculator.counter).to.equal(1);
+      done();
+   });
+
 });
 
 

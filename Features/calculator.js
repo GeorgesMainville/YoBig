@@ -17,30 +17,36 @@ class CalculatorCMD {
         this.msg.channel.send(value);
     }
 
-    execute() {
+    calculer(calcul) {
+        try {
+            let regex = new RegExp("^[0-9\\.\\+\\-\\*\\/\\%\\(\\) ]*$");
+            
+            if(calcul == '' || !regex.test(calcul)) {
+                return this.help;
+            }
 
-        if (this.chaineOperation == null) {
+            return eval(calcul); 
+
+        } catch (e) {
+            return this.help;
+        }
+    }
+
+    execute() {
+        if (this.chaineOperation == null || this.chaineOperation.length == 0) {
             this.print(this.help);
             return;
         }
 
-        if (this.chaineOperation.length < 3 && this.chaineOperation.length !== 1) {
-            this.print(this.help);
-        }
+        let calcul = this.chaineOperation.join(' ').replace(",", ".").trim();
 
-        if (this.chaineOperation.length === 1) {
-            this.print(eval(this.chaineOperation[0]));
-            // TODO: Make 9+10 return 21
+        if (calcul == '9+10') {
+            this.print('21');
+            this.print('you stoopid');
         }
-
-        if (this.chaineOperation.length === 3) {
-            if (this.chaineOperation[0] == 9 && this.chaineOperation[2] == 10) {
-                this.print('21');
-                this.print('you stoopid');
-            } else {
-                let result = eval(this.chaineOperation.join(' '));
-                this.print(result);
-            }
+        else {
+            let result = this.calculer(calcul); 
+            this.print(result);
         }
     }
 }

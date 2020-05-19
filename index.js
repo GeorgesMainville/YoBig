@@ -23,17 +23,27 @@ bot.on('message', msg => {
   }
 
   if (args.length == 1) {
-    msg.channel.send('Help'); // TODO Become a function;
+    showHelp();
   }
 
   switch (args[1]) {
+    case "", "h" ,"help":
+      showHelp();
+      return;
     case "what's": case "whats": case 'calc':
       new CalculatorCMD(msg, args.slice(2)).execute();
-
+      return;
     default:
       msg.channel.send('Type help command to see the list of available commands');
+      return;
   }
 });
+
+function showHelp() {
+  msg.channel.send("Hello sir! Here's what i can do! \n",
+                    "   ,h,help                 Show the help menu. \n",
+                    "   what's,whats,calc       Calculates an operation chain.");
+}
 
 function parseCommand(msg) {
   var args = msg.content.split(' ');
