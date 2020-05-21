@@ -16,12 +16,20 @@ class AudioPlayerCMD {
             return;
         }
 
+        if (this.msg.member.voiceChannel == null) {
+            this.print('Please join a channel to run a audio file.');
+            return;
+        }
+
         let voiceChannel = this.msg.member.voiceChannel;
 
         voiceChannel.join().then(connection => {
-            const dispatcher = connection.playFile('../Audio/audio2.mp3');
+            const dispatcher = connection.playFile('/Audio/audio');
+            console.log(dispatcher);
             dispatcher.on("end", end => {
-                voiceChannel.leave();
+                setTimeout(function(){
+                    voiceChannel.leave()
+                }, 1)
             });
         }).catch(err => console.info(err));
     }
