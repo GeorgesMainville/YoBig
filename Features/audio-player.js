@@ -11,12 +11,19 @@ class AudioPlayerCMD {
     }
 
     execute() {
-        if (this.args == null || this.args.length == 0 || this.args[0] === 'help' || this.args[0] === '')  {
+        if (this.args == null || this.args.length == 0 || this.args[0] === 'help' || this.args[0] === '') {
             this.print(this.help);
             return;
         }
 
-        
+        let voiceChannel = this.msg.member.voiceChannel;
+
+        voiceChannel.join().then(connection => {
+            const dispatcher = connection.playFile('../Audio/audio2.mp3');
+            dispatcher.on("end", end => {
+                voiceChannel.leave();
+            });
+        }).catch(err => console.info(err));
     }
 
     print(value) {

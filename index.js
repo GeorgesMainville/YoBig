@@ -1,12 +1,14 @@
 const CalculatorCMD = require('./Features/calculator');
+const AudioPlayerCMD = require('./Features/audio-player');
 
 require('dotenv').config();
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
 const TOKENDEV = process.env.TOKENDEV;
+var isReady = true;
 
-if(process.argv[2] == "d" ) {
+if (process.argv[2] === '-d') {
   bot.login(TOKENDEV);
 }
 else {
@@ -18,6 +20,11 @@ bot.on('ready', () => {
 });
 
 bot.on('message', msg => {
+
+  if (!isReady) {
+    return;
+  }
+
   let args = parseCommand(msg);
 
   if (msg.author.bot) {
@@ -33,6 +40,7 @@ bot.on('message', msg => {
     return;
   }
 
+  isReady = false;
   switch (args[1]) {
     case '': case 'h': case 'help':
       showHelp(msg);
@@ -41,17 +49,19 @@ bot.on('message', msg => {
       new CalculatorCMD(msg, args.slice(2)).execute();
       break;
     case 'tyl':
-      new AudioPlayerCMD(msg,args.slice(2)).execute();
+      new AudioPlayerCMD(msg, args.slice(2)).execute();
       break;
     default:
       msg.channel.send('Type help command to see the list of available commands');
   }
+  
+  isReady = true;
 });
 
 function showHelp(msg) {
   msg.channel.send("Hello sir! Here's what i can do! \n" +
-                    "   help        Show the help menu. \n" +
-                    "   whats       Calculates an operation chain.");
+    "   help        Show the help menu. \n" +
+    "   whats       Calculates an operation chain.");
 }
 
 function parseCommand(msg) {
