@@ -10,28 +10,36 @@ class AudioPlayerCMD {
         this.counter = 0;
     }
 
-    execute() {
-        if (this.args == null || this.args.length == 0 || this.args[0] === 'help' || this.args[0] === '') {
+    async execute() {
+
+        if (this.args == null || this.args.length === 0 || this.args[0] === 'help' || this.args[0] === '') {
             this.print(this.help);
             return;
         }
 
-        if (this.msg.member.voiceChannel == null) {
+        if (this.args.length > 1) {
+            this.print(this.help);
+            return;
+        }
+
+        if (this.msg.member.voice.channel == null) {
             this.print('Please join a channel to run a audio file.');
             return;
         }
 
-        let voiceChannel = this.msg.member.voiceChannel;
+        let voiceChannel = this.msg.member.voice.channel;
 
-        voiceChannel.join().then(connection => {
-            const dispatcher = connection.playFile('/Audio/audio');
-            console.log(dispatcher);
-            dispatcher.on("end", end => {
-                setTimeout(function(){
-                    voiceChannel.leave()
-                }, 1)
-            });
-        }).catch(err => console.info(err));
+        const connection = await voiceChannel.join();
+
+        const dispatcher = connection.play('./Audio/pel.m4a', {
+            volume: 1,
+        });
+
+        dispatcher.on('finish', () => {
+            console.log('Finished playing!');
+            dispatcher.destroy(); // end the stream
+            voiceChannel.leave()
+        });
     }
 
     print(value) {

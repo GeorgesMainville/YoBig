@@ -23,4 +23,18 @@ describe.only('Calculator tests', function () {
         expect(audioPlayer.testValue).to.equal(expected);
         expect(audioPlayer.counter).to.equal(1);
     });
+
+    it('Execute_WhenCalledWithMoreThan1Parameter_PrintsHelp', function (done) {
+        // Arrange
+        let audioPlayer = new AudioPlayerCMD(null, ['allo.mp3', 'test.mp3', 'troll.mp3']);
+        let expected = audioPlayer.help;
+  
+        // Act
+        audioPlayer.execute();
+  
+        // Assert
+        expect(audioPlayer.testValue).to.equal(expected);
+        expect(audioPlayer.counter).to.equal(1);
+        done();
+     });
 });
