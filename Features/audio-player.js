@@ -10,6 +10,8 @@ class AudioPlayerCMD {
             +"-------------------------- \r\n" +
             "ped";
         this.counter = 0;
+        this.defaultExt = '.m4a';
+        this.defaultDir = './Audio/';
     }
 
     async execute() {
@@ -24,13 +26,36 @@ class AudioPlayerCMD {
             return;
         }
 
-        if (this.msg.member.voice.channel == null) {
-            this.print('Please join a channel to run a audio file.');
+        if (this.args[0] === 'list') {
+            this.printList(this.defaultDir);
+        }
+        else {
+            let filePath = this.defaultDir + this.args[0] +  this.defaultExt;
+            await this.playAudio(filePath);
+        }
+    }
+
+    print(value) {
+        if (this.msg == null) {
+            this.counter++;
+            this.testValue = value;
             return;
         }
 
-        let filePath = './Audio/' + this.args[0] + '.m4a';
+        this.msg.channel.send(value);
+    }
 
+    printList(dir) {
+        let files = this.getFiles(dir);
+        let msg = ':musical_note: \u2009 Audio files  :musical_note: \n' +
+                  '----------------------- \n';
+        files.forEach(element => {
+            msg += element.substr(0, element.lastIndexOf('.')) + '\n';
+        });
+        this.print(msg);
+    }
+
+    async playAudio(filePath) {
         try {
             if (!fs.existsSync(filePath)) {
                 this.print("The file: " + this.args[0] + " does not exist. Type yobig tyl list to see available files.");
@@ -43,28 +68,37 @@ class AudioPlayerCMD {
 
         let voiceChannel = this.msg.member.voice.channel;
 
-        const connection = await voiceChannel.join();
-
-        const dispatcher = connection.play(filePath, {
-            volume: 0.5,
-        });
-
-        dispatcher.on('finish', () => {
-            console.log('Finished playing!');
-            dispatcher.destroy(); // end the stream
-            voiceChannel.leave()
-        });
-    }
-
-    print(value) {
-        if (this.msg == null) {
-            this.counter++;
-            this.testValue = value;
+        if (voiceChannel == null) {
+            this.print('Please join a channel to run a audio file.');
             return;
         }
 
-        this.msg.channel.send(value); // TODO: Go in the voice chat and play the audio file.
+        const connection = await voiceChannel.join();
+
+        const dispatcher = connection.play(filePath, {
+            volume: 0.7,
+        });
+
+        dispatcher.on('finish', () => {
+            dispatcher.destroy();
+            voiceChannel.leave();
+        });
     }
+
+    // TODO det file function
+    //getFile(dir, fileName) {
+        //let files = getFiles(dir);
+        //let files.find(fileName);
+    //}
+
+    getFiles(dir){    
+        if (!fs.existsSync(dir)){
+            return;
+        }
+    
+        return fs.readdirSync(dir);
+    };
+
 }
 
 module.exports = AudioPlayerCMD;
