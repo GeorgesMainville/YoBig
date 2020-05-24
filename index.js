@@ -48,7 +48,7 @@ bot.on('ready', () => {
     case "what's": case 'whats': case 'calc':
       new CalculatorCMD(msg, args.slice(2)).execute();
       break;
-    case 'tyl':
+    case 'tyl': case 'play':
       await new AudioPlayerCMD(msg, args.slice(2)).execute();
       break;
     default:
@@ -61,7 +61,8 @@ bot.on('ready', () => {
 function showHelp(msg) {
   msg.channel.send("Hello sir! Here's what i can do! \n" +
     "   help        Show the help menu. \n" +
-    "   whats       Calculates an operation chain.");
+    "   whats      Calculates an operation chain. \n" +
+    "   tyl         Play an audio file.");
 }
 
 function parseCommand(msg) {
