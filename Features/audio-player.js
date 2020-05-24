@@ -46,7 +46,7 @@ class AudioPlayerCMD {
         const connection = await voiceChannel.join();
 
         const dispatcher = connection.play(filePath, {
-            volume: 1,
+            volume: 0.5,
         });
 
         dispatcher.on('finish', () => {
