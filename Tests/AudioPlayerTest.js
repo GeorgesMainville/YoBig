@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var itParam = require('mocha-param').itParam;
 var AudioPlayerCMD = require('../Features/audio-player');
 
-describe.only('Calculator tests', function () {
+describe('Audio player tests', function () {
     
     const helpArgs = [
         [], //null
