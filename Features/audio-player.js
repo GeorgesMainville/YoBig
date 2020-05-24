@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 class AudioPlayerCMD {
     constructor(msg, args) {
         this.msg = msg;
@@ -27,11 +29,23 @@ class AudioPlayerCMD {
             return;
         }
 
+        let filePath = './Audio/' + this.args[0] + '.m4a';
+
+        try {
+            if (!fs.existsSync(filePath)) {
+                this.print("The file: " + this.args[0] + " does not exist. Type yobig tyl list to see available files.");
+                return;
+            }
+        } catch (err) {
+            console.error(err)
+            return;
+        }
+
         let voiceChannel = this.msg.member.voice.channel;
 
         const connection = await voiceChannel.join();
 
-        const dispatcher = connection.play('./Audio/pel.m4a', {
+        const dispatcher = connection.play(filePath, {
             volume: 1,
         });
 
