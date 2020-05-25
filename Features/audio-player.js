@@ -1,14 +1,12 @@
-const fs = require('fs')
+const fs = require('fs');
+const TextFormatterService = require('../Services/TextFormatterService');
 
 class AudioPlayerCMD {
     constructor(msg, args) {
         this.msg = msg;
         this.args = args; // for now, we will only use the first argument (filename), we may support more eventually
-        this.help =
-            "To use the tyl command, here's the synthax: yobig tyl name \r\n" +
-            +"List of available names: \r\n" +
-            +"-------------------------- \r\n" +
-            "ped";
+        this.help = "To use the tyl command, type: `yobig tyl 'AudioFile'`." +
+            "\n To see the list of available audio files, type: `yobig tyl list`";
         this.counter = 0;
         this.defaultExt = '.m4a';
         this.defaultDir = './Audio/';
@@ -30,7 +28,7 @@ class AudioPlayerCMD {
             this.printList(this.defaultDir);
         }
         else {
-            let filePath = this.defaultDir + this.args[0] +  this.defaultExt;
+            let filePath = this.defaultDir + this.args[0] + this.defaultExt;
             await this.playAudio(filePath);
         }
     }
@@ -47,12 +45,22 @@ class AudioPlayerCMD {
 
     printList(dir) {
         let files = this.getFiles(dir);
-        let msg = ':musical_note: \u2009 Audio files  :musical_note: \n' +
-                  '----------------------- \n';
+        let fileNames = [];
+
         files.forEach(element => {
-            msg += element.substr(0, element.lastIndexOf('.')) + '\n';
+            fileNames.push(element.substr(0, element.lastIndexOf('.')));
         });
-        this.print(msg);
+
+        this.print(TextFormatterService.format(':musical_note: \u2009 Audio files  :musical_note:', [
+            {
+                "name": "-------------------------",
+                "value": fileNames,
+            },
+        ]));
+    }
+
+    printHelp() {
+
     }
 
     async playAudio(filePath) {
@@ -87,15 +95,15 @@ class AudioPlayerCMD {
 
     // TODO det file function
     //getFile(dir, fileName) {
-        //let files = getFiles(dir);
-        //let files.find(fileName);
+    //let files = getFiles(dir);
+    //let files.find(fileName);
     //}
 
-    getFiles(dir){    
-        if (!fs.existsSync(dir)){
+    getFiles(dir) {
+        if (!fs.existsSync(dir)) {
             return;
         }
-    
+
         return fs.readdirSync(dir);
     };
 
