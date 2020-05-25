@@ -61,24 +61,18 @@ bot.on('ready', () => {
 
 function showHelp(msg) {
 
-  // msg.channel.send(TextFormatterService.format(''));
-  // msg.channel.send("Hello sir! Here's what i can do! \n" +
-  //   "   help    Show the help menu. \n" +
-  //   "   whats Calculates an operation chain. \n" +
-  //   "   tyl        Play an audio file.");
-
   msg.channel.send(TextFormatterService.format('Help',[
     {
-      "name": "<:thonkang:219069250692841473>",
-      "value": "these last two",
+      "name": "Commands",
+      "value": ['Help','Whats','Tyl'],
       "inline": true
     },
     {
-      "name": "<:thonkang:219069250692841473>",
-      "value": "are inline fields",
+      "name": "Description",
+      "value": ['Shows this menu','Calculates a math operation','Plays an audio file'],
       "inline": true
     }
-  ]))
+  ], 'This is the list of available commands that the bot can execute'))
 }
 
 function parseCommand(msg) {

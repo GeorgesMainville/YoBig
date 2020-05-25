@@ -1,21 +1,17 @@
 class TextFormatterService {
 
-
-    static format(title, fields, withHeader = true, withFooter = true) {
+    static format(title, fields, description = '', url = 'https://cdn.discordapp.com/embed/avatars/0.png') {
         return {
             "embed": {
                 "title": title,
-                "description": "this supports [named links](https://discordapp.com) on top of the previously shown subset of markdown. ```\nyes, even code blocks```",
-                "url": "https://discordapp.com",
-                "color": 4832929,
-                "timestamp": "2020-05-24T17:31:16.072Z",
+                "description": description,
+                "url": "https://www.google.com/", // TODO
+                "color": 5332929,
                 "footer": {
-                    "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
-                    "text": "For more information, visit: [our website] https://discordapp.com",
-                    "url": "https://discordapp.com",
+                    "text": "Made by Etien and Georges",
                 },
                 "thumbnail": {
-                    "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+                    "url": url
                 },
                 "fields": fields
             }
