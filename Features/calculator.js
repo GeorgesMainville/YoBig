@@ -3,7 +3,7 @@ class CalculatorCMD {
     constructor(msg, chaineOperation) {
         this.msg = msg;
         this.chaineOperation = chaineOperation;
-        this.help = "Please use this format: 5+1-3*5 OR 5 + 1 - 3 * 5";
+        this.help = "Please use this format: `5+1-3*5` OR `5 + 1 - 3 * 5`";
         this.counter = 0;
     }
 
@@ -38,9 +38,9 @@ class CalculatorCMD {
             return;
         }
 
-        let calcul = this.chaineOperation.join(' ').replace(",", ".").trim();
+        let calcul = this.chaineOperation.join('').replace(",", ".").trim();
 
-        if (calcul == '9+10') {
+        if (calcul === '9+10') {
             this.print('21');
             this.print('you stoopid');
         }

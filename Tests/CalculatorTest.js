@@ -130,6 +130,35 @@ describe('Calculator tests', function () {
       done();
    });
 
+   it('Execute_WhenCalledWith9+10As3Args_Prints21', function (done) {
+      // Arrange
+      let expected = 'you stoopid';
+      let calculator = new CalculatorCMD(null, ['9', '+', '10']);
+
+      // Act
+      calculator.execute();
+
+      // Assert
+      expect(calculator.testValue).to.equal(expected);
+      expect(calculator.counter).to.equal(2);
+      done();
+   });
+
+   it('Execute_WhenCalledWith9+10AsOneArg_Prints21', function (done) {
+      // Arrange
+      let expected = 'you stoopid';
+      let calculator = new CalculatorCMD(null, ['9+10']);
+
+      // Act
+      calculator.execute();
+
+      // Assert
+      expect(calculator.testValue).to.equal(expected);
+      expect(calculator.counter).to.equal(2);
+      done();
+   });
+
+
 });
 
 
