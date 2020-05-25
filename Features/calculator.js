@@ -38,9 +38,9 @@ class CalculatorCMD {
             return;
         }
 
-        let calcul = this.chaineOperation.join(' ').replace(",", ".").trim();
+        let calcul = this.chaineOperation.join('').replace(",", ".").trim();
 
-        if (calcul === '9+10' || calcul ==='9 + 10') {
+        if (calcul === '9+10') {
             this.print('21');
             this.print('you stoopid');
         }
