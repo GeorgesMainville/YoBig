@@ -1,0 +1,16 @@
+{
+  "name": "yobig-webapp",
+  "description": "Hi, i'm the web app of yobig!",
+  "main": "server.js",
+  "author": "Etienne Simoneau, Georges Mainville",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.9.16"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.1.2"
+  }
+}
