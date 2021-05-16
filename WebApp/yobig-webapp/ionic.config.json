@@ -1,0 +1,7 @@
+{
+  "name": "yobig-webapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
