@@ -4,6 +4,7 @@
   "description": "Big! Why you don't know me?",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js -d",
     "test": "mocha tests/**/*.js"
   },
   "author": "Etienne Simoneau, Georges Mainville",
