@@ -1,23 +1,23 @@
 {
-  "name": "discord-bot-yobig",
-  "version": "1.0.0",
-  "description": "Big! Why you don't know me?",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js -d",
-    "test": "mocha tests/**/*.js"
-  },
-  "author": "Etienne Simoneau, Georges Mainville",
-  "license": "ISC",
-  "dependencies": {
-    "@discordjs/opus": "^0.3.2",
-    "discord.js": "^12.2.0",
-    "dotenv": "^8.2.0",
-    "ffmpeg-static": "^4.2.2",
-    "mocha-param": "^2.0.1"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^7.1.2"
-  }
+    "name": "discord-bot-yobig",
+    "version": "1.0.0",
+    "description": "Big! Why you don't know me?",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js -d",
+        "test": "mocha tests/**/*.js"
+    },
+    "author": "Etienne Simoneau, Georges Mainville",
+    "license": "ISC",
+    "dependencies": {
+        "@discordjs/opus": "^0.3.2",
+        "discord.js": "^12.2.0",
+        "dotenv": "^8.2.0",
+        "ffmpeg-static": "^4.2.2",
+        "mocha-param": "^2.0.1"
+    },
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "mocha": "^7.1.2"
+    }
 }
