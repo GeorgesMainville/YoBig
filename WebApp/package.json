@@ -67,6 +67,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "2.4.7",
+    "eslint-config-prettier": "^8.3.0",
     "prettier": "2.3.0"
   },
   "description": "Web application for YoBig side project.",
