@@ -12,8 +12,8 @@
 
 ## 😎 How did you get Chad's approval?
 
--   [ ] Unit and integration tests
--   [ ] Configurations
--   [ ] Permissions
--   [ ] Preliminary self review
--   [ ] Updated the documentation
+- [ ] Unit and integration tests
+- [ ] Configurations
+- [ ] Permissions
+- [ ] Preliminary self review
+- [ ] Updated the documentation
