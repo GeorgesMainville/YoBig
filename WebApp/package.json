@@ -69,5 +69,8 @@
     "@capacitor/cli": "2.4.7",
     "prettier": "2.3.0"
   },
-  "description": "Web application for YoBig side project."
+  "description": "Web application for YoBig side project.",
+  "prettier": {
+    "singleQuote": true
+  }
 }
