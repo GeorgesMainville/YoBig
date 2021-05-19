@@ -5,21 +5,16 @@ class AudioPlayerCMD {
     constructor(msg, args) {
         this.msg = msg;
         this.args = args; // for now, we will only use the first argument (filename), we may support more eventually
-        this.help =
-            "To use the tyl command, type: `yobig tyl 'AudioFile'`." +
-            '\n To see the list of available audio files, type: `yobig tyl list`';
+        this.help = "To use the tyl command, type: `yobig tyl 'AudioFile'`." +
+            "\n To see the list of available audio files, type: `yobig tyl list`";
         this.counter = 0;
         this.defaultExt = '.m4a';
         this.defaultDir = './Audio/';
     }
 
     async execute() {
-        if (
-            this.args == null ||
-            this.args.length === 0 ||
-            this.args[0] === 'help' ||
-            this.args[0] === ''
-        ) {
+
+        if (this.args == null || this.args.length === 0 || this.args[0] === 'help' || this.args[0] === '') {
             this.print(this.help);
             return;
         }
@@ -31,7 +26,8 @@ class AudioPlayerCMD {
 
         if (this.args[0] === 'list') {
             this.printList(this.defaultDir);
-        } else {
+        }
+        else {
             let filePath = this.defaultDir + this.args[0] + this.defaultExt;
             await this.playAudio(filePath);
         }
@@ -51,37 +47,30 @@ class AudioPlayerCMD {
         let files = this.getFiles(dir);
         let fileNames = [];
 
-        files.forEach((element) => {
+        files.forEach(element => {
             fileNames.push(element.substr(0, element.lastIndexOf('.')));
         });
 
-        this.print(
-            TextFormatterService.format(
-                ':musical_note: \u2009 Audio files  :musical_note:',
-                [
-                    {
-                        name: '-------------------------',
-                        value: fileNames
-                    }
-                ]
-            )
-        );
+        this.print(TextFormatterService.format(':musical_note: \u2009 Audio files  :musical_note:', [
+            {
+                "name": "-------------------------",
+                "value": fileNames,
+            },
+        ]));
     }
 
-    printHelp() {}
+    printHelp() {
+
+    }
 
     async playAudio(filePath) {
         try {
             if (!fs.existsSync(filePath)) {
-                this.print(
-                    'The file: ' +
-                        this.args[0] +
-                        ' does not exist. Type yobig tyl list to see available files.'
-                );
+                this.print("The file: " + this.args[0] + " does not exist. Type yobig tyl list to see available files.");
                 return;
             }
         } catch (err) {
-            console.error(err);
+            console.error(err)
             return;
         }
 
@@ -95,7 +84,7 @@ class AudioPlayerCMD {
         const connection = await voiceChannel.join();
 
         const dispatcher = connection.play(filePath, {
-            volume: 0.7
+            volume: 0.7,
         });
 
         dispatcher.on('finish', () => {
@@ -116,7 +105,8 @@ class AudioPlayerCMD {
         }
 
         return fs.readdirSync(dir);
-    }
+    };
+
 }
 
 module.exports = AudioPlayerCMD;

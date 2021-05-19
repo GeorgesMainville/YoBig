@@ -10,90 +10,76 @@ const TOKENDEV = process.env.TOKENDEV;
 var isReady = true;
 
 if (process.argv[2] === '-d') {
-    bot.login(TOKENDEV);
-} else {
-    bot.login(TOKEN);
+  bot.login(TOKENDEV);
+}
+else {
+  bot.login(TOKEN);
 }
 
 bot.on('ready', () => {
-    console.info(`Logged in as ${bot.user.tag}!`);
+  console.info(`Logged in as ${bot.user.tag}!`);
 });
 
-bot.on('message', async (msg) => {
-    if (!isReady) {
-        return;
-    }
+ bot.on('message', async msg => {
 
-    let args = parseCommand(msg);
+  if (!isReady) {
+    return;
+  }
 
-    if (msg.author.bot) {
-        return;
-    }
+  let args = parseCommand(msg);
 
-    if (args == null || args.length < 1) {
-        return;
-    }
+  if (msg.author.bot) {
+    return;
+  }
 
-    if (args.length == 1) {
-        showHelp(msg);
-        return;
-    }
+  if (args == null || args.length < 1) {
+    return;
+  }
 
-    isReady = false;
-    switch (args[1]) {
-        case '':
-        case 'h':
-        case 'help':
-            showHelp(msg);
-            break;
-        case "what's":
-        case 'whats':
-        case 'calc':
-            new CalculatorCMD(msg, args.slice(2)).execute();
-            break;
-        case 'tyl':
-        case 'play':
-            await new AudioPlayerCMD(msg, args.slice(2)).execute();
-            break;
-        default:
-            msg.channel.send(
-                'Type help command to see the list of available commands'
-            );
-    }
+  if (args.length == 1) {
+    showHelp(msg);
+    return;
+  }
 
-    isReady = true;
+  isReady = false;
+  switch (args[1]) {
+    case '': case 'h': case 'help':
+      showHelp(msg);
+      break;
+    case "what's": case 'whats': case 'calc':
+      new CalculatorCMD(msg, args.slice(2)).execute();
+      break;
+    case 'tyl': case 'play':
+      await new AudioPlayerCMD(msg, args.slice(2)).execute();
+      break;
+    default:
+      msg.channel.send('Type help command to see the list of available commands');
+  }
+  
+  isReady = true;
 });
 
 function showHelp(msg) {
-    msg.channel.send(
-        TextFormatterService.format(
-            'Help',
-            [
-                {
-                    name: 'Commands',
-                    value: ['Help', 'Whats', 'Tyl'],
-                    inline: true
-                },
-                {
-                    name: 'Description',
-                    value: [
-                        'Shows this menu',
-                        'Calculates a math operation',
-                        'Plays an audio file'
-                    ],
-                    inline: true
-                }
-            ],
-            'This is the list of available commands that the bot can execute'
-        )
-    );
+
+  msg.channel.send(TextFormatterService.format('Help',[
+    {
+      "name": "Commands",
+      "value": ['Help','Whats','Tyl'],
+      "inline": true
+    },
+    {
+      "name": "Description",
+      "value": ['Shows this menu','Calculates a math operation','Plays an audio file'],
+      "inline": true
+    }
+  ], 'This is the list of available commands that the bot can execute'))
 }
 
 function parseCommand(msg) {
-    var args = msg.content.split(' ');
-    if (args[0].toLowerCase() !== 'yobig') {
-        return;
-    }
+  var args = msg.content.split(' ');
+  if (args[0].toLowerCase() !== 'yobig') {
+    return;
+  }
 
-    return args;
+  return args;
 }
