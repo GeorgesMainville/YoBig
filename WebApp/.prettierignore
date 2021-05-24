@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore html files:
+*.html
+
+# Ignore Markdown files:
+*.md
