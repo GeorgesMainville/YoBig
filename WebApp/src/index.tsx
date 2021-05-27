@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { IntlProvider } from 'react-intl';
+
+import i18n from './lang/i18n';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <IntlProvider locale='fr' messages={i18n['fr']}>
+      <App />
+    </IntlProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
