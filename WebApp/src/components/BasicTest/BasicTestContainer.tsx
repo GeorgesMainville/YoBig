@@ -1,25 +1,17 @@
 import './BasicTestContainer.css';
 import { IonText, IonButton } from '@ionic/react';
-import React, { useState } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
+import LangSelector from '../../components/LangSelector';
 
 interface ContainerProps {}
 
-const ExploreContainer: React.FC<ContainerProps> = () => {
-
-  const swapQuote = () => {
-    // TODO: Set intl
-  };
-
+const ExploreContainer: React.FC<ContainerProps> = () => {  
   return (
     <div className="container">
       <IonText color="primary">
-        <FormattedMessage id='app_text' />
+        <FormattedMessage id="app_text" />
       </IonText>
-      <div />
-      <IonButton color="secondary" className="quoteButton" onClick={swapQuote}>
-        Change quote
-      </IonButton>
     </div>
   );
 };
