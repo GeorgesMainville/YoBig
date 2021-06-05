@@ -1,6 +1,6 @@
-import './BasicTestContainer.css';
-import { IonText, IonButton } from '@ionic/react';
+import { IonText } from '@ionic/react';
 import React, { useState } from 'react';
+import { BasicTestContainer, QuoteButton } from './BasicTestContainer.style';
 
 interface ContainerProps {}
 
@@ -17,13 +17,17 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
   };
 
   return (
-    <div className="container">
+    <BasicTestContainer>
       <IonText color="primary">{quote}</IonText>
       <div />
-      <IonButton color="secondary" className="quoteButton" onClick={swapQuote}>
+      <QuoteButton
+        color="secondary"
+        className="quoteButton"
+        onClick={swapQuote}
+      >
         Change quote
-      </IonButton>
-    </div>
+      </QuoteButton>
+    </BasicTestContainer>
   );
 };
 
