@@ -1,34 +1,26 @@
-import { IonSelect, IonSelectOption } from '@ionic/react';
-import{ useCallback } from 'react';
+import { useCallback } from 'react';
+import { FormattedMessage } from 'react-intl';
 import { LangContextProps } from '../../contexts/LangContext';
 
 type LangSelectorLogicProps = {
-    langContext : LangContextProps
-}
-
-function LangSelectorLogic({ langContext } : LangSelectorLogicProps): JSX.Element {
-
-    const {
-        setLang,
-        lang,
-        availableLangs,
-    } = langContext;
-
-    const handleLangChange = useCallback((newLang) => {
-        if(setLang && lang !== newLang) {
-          setLang(newLang);
-        }
-    }, [lang, setLang]);
-
-    const listLangs = availableLangs?.map((lang) => (
-        <IonSelectOption key={lang} value={lang}>{lang}</IonSelectOption>
-    ));
-
-    return (
-        <IonSelect value={lang} onIonChange={({ detail }) => handleLangChange(detail.value) }>
-            {listLangs}
-        </IonSelect>
-    );
+  langContext: LangContextProps;
 };
 
-export default LangSelectorLogic;
+function LangToggleLogic({ langContext }: LangSelectorLogicProps): JSX.Element {
+  const { setLang, lang } = langContext;
+
+  const handleLangChange = useCallback(() => {
+    if (setLang && lang) {
+      const newLang = lang === 'en' ? 'fr' : 'en';
+      setLang(newLang);
+    }
+  }, [lang, setLang]);
+
+  return (
+    <div onClick={handleLangChange}>
+      <FormattedMessage id={lang} />
+    </div>
+  );
+}
+
+export default LangToggleLogic;

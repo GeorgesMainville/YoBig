@@ -1,16 +1,12 @@
-import{ ReactNode } from 'react';
+import { ReactNode } from 'react';
 import LangProvider from '../LangProvider';
 
 type AppProvidersProps = {
-    children: ReactNode;
-}
+  children: ReactNode;
+};
 
 function AppProvidersLogic({ children }: AppProvidersProps): JSX.Element {
-    return (
-        <LangProvider>
-            {children}
-        </LangProvider>
-    );
-};
+  return <LangProvider>{children}</LangProvider>;
+}
 
 export default AppProvidersLogic;
