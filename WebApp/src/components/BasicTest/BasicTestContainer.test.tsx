@@ -25,5 +25,6 @@ describe('BasicTestContainer', () => {
 
     // Assert
     expect(quoteText).toHaveTextContent('Georges is the best programmer');
+    expect(false).toBe(true);
   });
 });
