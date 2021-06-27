@@ -42,7 +42,7 @@
     "test": "react-scripts test",
     "test-gui": "npx majestic",
     "eject": "react-scripts eject",
-    "lint": "npm run eslint && npm run prettier -- --check",
+    "lint": "yarn eslint && yarn prettier --check",
     "prettier": "prettier \"**/*.ts\"",
     "eslint": "eslint . --ext .ts --ext .tsx",
     "lint-fix": "npx prettier --write ."

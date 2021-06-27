@@ -7,7 +7,6 @@ import {
 } from '@ionic/react';
 import React from 'react';
 import BasicTestContainer from '../components/BasicTest/BasicTestContainer';
-import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 
 const Home: React.FC = () => {

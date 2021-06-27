@@ -2,9 +2,7 @@ import { IonText } from '@ionic/react';
 import React, { useState } from 'react';
 import { BasicTestContainer, QuoteButton } from './BasicTestContainer.style';
 
-interface ContainerProps {}
-
-const ExploreContainer: React.FC<ContainerProps> = () => {
+const ExploreContainer: React.FC = () => {
   const quotes = [
     'Georges is the best programmer',
     'Etien is the best programmer',
@@ -13,7 +11,8 @@ const ExploreContainer: React.FC<ContainerProps> = () => {
   const [quote, setQuote] = useState(quotes[0]);
 
   const swapQuote = () => {
-    setQuote(quotes.find((x) => x !== quote)!);
+    if (quote === quotes[0]) setQuote(quotes[1]);
+    else setQuote(quotes[0]);
   };
 
   return (
