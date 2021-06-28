@@ -1,7 +1,7 @@
 import { IonButton } from '@ionic/react';
 import styled from 'styled-components';
 
-export const BasicTestContainer = styled.div`
+export const Container = styled.div`
   text-align: center;
   position: absolute;
   left: 0;
