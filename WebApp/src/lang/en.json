@@ -1,4 +1,8 @@
 {
-    "app_title": "YoBig",
-    "app_text": "Etien is the best programmer"
+  "app_title": "YoBig",
+  "etien_quote": "Etien is the best programmer",
+  "georges_quote": "Georges is the best programmer",
+  "en": "En",
+  "fr": "Fr",
+  "explore_container_change_quote": "Change quote"
 }

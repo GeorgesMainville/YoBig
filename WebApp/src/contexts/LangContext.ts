@@ -3,17 +3,19 @@ import { AVAILABLE_LANGS, DEFAULT_LANG } from '../lang/i18n';
 
 export type LangContextProps = {
   lang: string;
-  setLang: Function | null;
+  setLang: (lang: string) => void;
   availableLangs: string[];
 };
 
-export const DefaultLangContext = {
-  setLang: null,
+export const DefaultLangContext: LangContextProps = {
   lang: DEFAULT_LANG,
+  setLang: (lang: string) => null,
   availableLangs: AVAILABLE_LANGS,
 };
 
-export const createLangContext = (setLangContext: Function): LangContextProps => {
+export const createLangContext = (
+  setLangContext: React.Dispatch<React.SetStateAction<LangContextProps>>
+): LangContextProps => {
   const lang = localStorage.getItem('lang') || DEFAULT_LANG;
   const setLang = (lang: string) => {
     localStorage.setItem('lang', lang);

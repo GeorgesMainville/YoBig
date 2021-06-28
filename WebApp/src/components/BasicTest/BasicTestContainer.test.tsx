@@ -1,8 +1,7 @@
 import { fireEvent } from '@testing-library/react';
 import { screen } from '@testing-library/dom';
 import BasicTestContainer from './BasicTestContainer';
-import { render } from '../../utils/tests-utils';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { formattedMessage, render } from '../../utils/tests-utils';
 
 describe('BasicTestContainer', () => {
   it('ChangeQuote_WhenTextValueIsFirstValue_SetQuoteToSecondValue', async () => {
@@ -14,7 +13,7 @@ describe('BasicTestContainer', () => {
 
     // Assert
     const quote = await screen.findByTestId('quote-display');
-    expect(quote).toHaveTextContent('Georges is the best programmer');
+    expect(quote).toHaveTextContent(formattedMessage('georges_quote'));
   });
 
   it('ChangeQuote_WhenClickingTwoTimes_RevertQuoteToFirstValue', async () => {
@@ -27,6 +26,6 @@ describe('BasicTestContainer', () => {
 
     // Assert
     const quote = await screen.findByTestId('quote-display');
-    expect(quote).toHaveTextContent('Etien is the best programmer');
+    expect(quote).toHaveTextContent(formattedMessage('etien_quote'));
   });
 });

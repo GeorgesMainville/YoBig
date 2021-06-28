@@ -1,17 +1,15 @@
-import './BasicTestContainer.css';
 import { IonText, IonButton } from '@ionic/react';
 import React, { useState } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
-interface ContainerProps {}
-
-const ExploreContainer: React.FC<ContainerProps> = () => {
+const ExploreContainer: React.FC = () => {
   const quotes = ['etien_quote', 'georges_quote'];
 
   const [quote, setQuote] = useState(quotes[0]);
 
   const swapQuote = () => {
-    setQuote(quotes.find((x) => x !== quote)!);
+    if (quote === quotes[0]) setQuote(quotes[1]);
+    else setQuote(quotes[0]);
   };
 
   return (

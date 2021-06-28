@@ -1,4 +1,8 @@
 {
-    "app_title": "YoBig",
-    "app_text": "Georges est le meilleur programmeur"
+  "app_title": "YoBig",
+  "etien_quote": "Etien est le meilleur programmeur",
+  "georges_quote": "Georges est le meilleur programmeur",
+  "en": "En",
+  "fr": "Fr",
+  "explore_container_change_quote": "Changer de citation"
 }
