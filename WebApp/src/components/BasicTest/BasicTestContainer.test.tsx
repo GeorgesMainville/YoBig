@@ -4,7 +4,7 @@ import BasicTestContainer from './BasicTestContainer';
 describe('BasicTestContainer', () => {
   it('ChangeQuote_WhenTextValueIsFirstValue_SetQuoteToSecondValue', () => {
     // Arrange
-    const { baseElement } = render(<BasicTestContainer />);
+    render(<BasicTestContainer />);
     const quoteText = screen.getByText('Georges is the best programmer');
 
     // Act
@@ -16,7 +16,7 @@ describe('BasicTestContainer', () => {
 
   it('ChangeQuote_WhenClickingTwoTimes_RevertQuoteToFirstValue', () => {
     // Arrange
-    const { baseElement } = render(<BasicTestContainer />);
+    render(<BasicTestContainer />);
     const quoteText = screen.getByText('Georges is the best programmer');
 
     // Act
