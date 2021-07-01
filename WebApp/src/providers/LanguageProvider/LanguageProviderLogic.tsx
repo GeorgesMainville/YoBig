@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
+import flattenMessages from 'utils/intl-utils';
 import LanguageContext, {
   DefaultLanguageContext,
   createLanguageContext,
@@ -28,7 +29,7 @@ function LanguageProviderLogic({
 
   return (
     <LanguageContext.Provider value={languageContext}>
-      <IntlProvider locale={locale} messages={messages}>
+      <IntlProvider locale={locale} messages={flattenMessages(messages)}>
         {children}
       </IntlProvider>
     </LanguageContext.Provider>

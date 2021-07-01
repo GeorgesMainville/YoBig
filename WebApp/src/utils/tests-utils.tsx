@@ -18,10 +18,7 @@ const customRender = (
 ) => render(ui, { wrapper: AllTheProviders, ...options });
 
 function customFormattedMessage(id: string): string {
-  const messages:
-    | Record<string, string>
-    | Record<string, MessageFormatElement[]>
-    | undefined = i18n.get(DEFAULT_LANGUAGE);
+  const messages: any = i18n.get(DEFAULT_LANGUAGE);
   return messages ? messages[id] : '';
 }
 

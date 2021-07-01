@@ -13,7 +13,7 @@ describe('BasicTestContainer', () => {
 
     // Assert
     const quote = await screen.findByTestId('quote-display');
-    expect(quote).toHaveTextContent(formattedMessage('georges_quote'));
+    expect(quote).toHaveTextContent(formattedMessage('quote.georges_quote'));
   });
 
   it('ChangeQuote_WhenClickingTwoTimes_RevertQuoteToFirstValue', async () => {
@@ -26,6 +26,6 @@ describe('BasicTestContainer', () => {
 
     // Assert
     const quote = await screen.findByTestId('quote-display');
-    expect(quote).toHaveTextContent(formattedMessage('etien_quote'));
+    expect(quote).toHaveTextContent(formattedMessage('quote.etien_quote'));
   });
 });
