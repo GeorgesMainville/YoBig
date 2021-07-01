@@ -1,0 +1,10 @@
+{
+  "app_title": "YoBig",
+  "en": "En",
+  "fr": "Fr",
+  "quote": {
+    "change": "Changer de citation",
+    "etien_quote": "Etien est le meilleur programmeur",
+    "georges_quote": "Georges est le meilleur programmeur"
+  }
+}

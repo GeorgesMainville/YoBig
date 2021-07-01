@@ -6,7 +6,9 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import BasicTestContainer from '../components/BasicTest/BasicTestContainer';
+import LanguageSelector from '../components/LanguageSelector';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -14,13 +16,18 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle>
+            <FormattedMessage id="app_title" />
+          </IonTitle>
+          <LanguageSelector />
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
+            <IonTitle size="large">
+              <FormattedMessage id="app_title" />
+            </IonTitle>
           </IonToolbar>
         </IonHeader>
         <BasicTestContainer />

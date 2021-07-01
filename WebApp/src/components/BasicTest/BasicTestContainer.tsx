@@ -1,12 +1,10 @@
 import { IonText } from '@ionic/react';
 import React, { useState } from 'react';
-import { BasicTestContainer, QuoteButton } from './BasicTestContainer.style';
+import { FormattedMessage } from 'react-intl';
+import { Container, QuoteButton } from './BasicTestContainer.style';
 
-const ExploreContainer: React.FC = () => {
-  const quotes = [
-    'Georges is the best programmer',
-    'Etien is the best programmer',
-  ];
+const BasicTestContainer: React.FC = () => {
+  const quotes = ['quote.etien_quote', 'quote.georges_quote'];
 
   const [quote, setQuote] = useState(quotes[0]);
 
@@ -16,18 +14,21 @@ const ExploreContainer: React.FC = () => {
   };
 
   return (
-    <BasicTestContainer>
-      <IonText color="primary">{quote}</IonText>
+    <Container>
+      <IonText data-testid="quote-display" color="primary">
+        <FormattedMessage id={quote} />
+      </IonText>
       <div />
       <QuoteButton
+        data-testid="quote-button"
         color="secondary"
         className="quoteButton"
         onClick={swapQuote}
       >
-        Change quote
+        <FormattedMessage id="quote.change" />
       </QuoteButton>
-    </BasicTestContainer>
+    </Container>
   );
 };
 
-export default ExploreContainer;
+export default BasicTestContainer;

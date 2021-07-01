@@ -1,29 +1,31 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/dom';
 import BasicTestContainer from './BasicTestContainer';
+import { formattedMessage, render } from '../../utils/tests-utils';
 
 describe('BasicTestContainer', () => {
-  it('ChangeQuote_WhenTextValueIsFirstValue_SetQuoteToSecondValue', () => {
+  it('ChangeQuote_WhenTextValueIsFirstValue_SetQuoteToSecondValue', async () => {
     // Arrange
     render(<BasicTestContainer />);
-    const quoteText = screen.getByText('Georges is the best programmer');
 
     // Act
-    fireEvent.click(screen.getByText('Change quote'));
+    fireEvent.click(screen.getByTestId('quote-button'));
 
     // Assert
-    expect(quoteText).toHaveTextContent('Etien is the best programmer');
+    const quote = await screen.findByTestId('quote-display');
+    expect(quote).toHaveTextContent(formattedMessage('quote.georges_quote'));
   });
 
-  it('ChangeQuote_WhenClickingTwoTimes_RevertQuoteToFirstValue', () => {
+  it('ChangeQuote_WhenClickingTwoTimes_RevertQuoteToFirstValue', async () => {
     // Arrange
     render(<BasicTestContainer />);
-    const quoteText = screen.getByText('Georges is the best programmer');
 
     // Act
-    fireEvent.click(screen.getByText('Change quote'));
-    fireEvent.click(screen.getByText('Change quote'));
+    fireEvent.click(screen.getByTestId('quote-button'));
+    fireEvent.click(screen.getByTestId('quote-button'));
 
     // Assert
-    expect(quoteText).toHaveTextContent('Georges is the best programmer');
+    const quote = await screen.findByTestId('quote-display');
+    expect(quote).toHaveTextContent(formattedMessage('quote.etien_quote'));
   });
 });
