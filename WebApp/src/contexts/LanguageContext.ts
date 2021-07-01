@@ -9,7 +9,7 @@ export type LanguageContextProps = {
 
 export const DefaultLanguageContext: LanguageContextProps = {
   language: DEFAULT_LANGUAGE,
-  setLanguage: (language: string) => null,
+  setLanguage: () => null,
   availableLanguages: AVAILABLE_LANGUAGES,
 };
 

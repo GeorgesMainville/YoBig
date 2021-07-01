@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Container, QuoteButton } from './BasicTestContainer.style';
 
 const BasicTestContainer: React.FC = () => {
-  const quotes = ['etien_quote', 'georges_quote'];
+  const quotes = ['quote.etien_quote', 'quote.georges_quote'];
 
   const [quote, setQuote] = useState(quotes[0]);
 
@@ -25,7 +25,7 @@ const BasicTestContainer: React.FC = () => {
         className="quoteButton"
         onClick={swapQuote}
       >
-        <FormattedMessage id="explore_container_change_quote" />
+        <FormattedMessage id="quote.change" />
       </QuoteButton>
     </Container>
   );
