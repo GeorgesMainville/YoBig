@@ -18,7 +18,7 @@ const customRender = (
 ) => render(ui, { wrapper: AllTheProviders, ...options });
 
 function customFormattedMessage(id: string): string {
-  const tranlations: any = i18n.get(DEFAULT_LANGUAGE);
+  const translations: any = i18n.get(DEFAULT_LANGUAGE);
   return flattenMessages(tranlations)[id];
 }
 
