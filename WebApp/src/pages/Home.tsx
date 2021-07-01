@@ -8,7 +8,7 @@ import {
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import BasicTestContainer from '../components/BasicTest/BasicTestContainer';
-import LangSelector from '../components/LangSelector';
+import LanguageSelector from '../components/LanguageSelector';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -19,7 +19,7 @@ const Home: React.FC = () => {
           <IonTitle>
             <FormattedMessage id="app_title" />
           </IonTitle>
-          <LangSelector />
+          <LanguageSelector />
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>

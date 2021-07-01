@@ -5,7 +5,7 @@
 import { FC, ReactElement } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import AppProviders from '../providers/AppProviders';
-import i18n, { DEFAULT_LANG } from 'lang/i18n';
+import i18n, { DEFAULT_LANGUAGE } from 'language/i18n';
 import { MessageFormatElement } from 'react-intl';
 
 const AllTheProviders: FC = ({ children }) => {
@@ -21,7 +21,7 @@ function customFormattedMessage(id: string): string {
   const messages:
     | Record<string, string>
     | Record<string, MessageFormatElement[]>
-    | undefined = i18n.get(DEFAULT_LANG);
+    | undefined = i18n.get(DEFAULT_LANGUAGE);
   return messages ? messages[id] : '';
 }
 

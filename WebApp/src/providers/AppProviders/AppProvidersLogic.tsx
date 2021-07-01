@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import LangProvider from '../LangProvider';
+import LangProvider from '../LanguageProvider';
 
 type AppProvidersProps = {
   children: ReactNode;
