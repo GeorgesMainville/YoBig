@@ -1,5 +1,9 @@
 name: Run Linter
-on: push
+on:  
+  push:
+  pull_request:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
