@@ -5,6 +5,7 @@
 import '@testing-library/jest-dom/extend-expect';
 
 // Mock matchmedia
+// @ts-expect-error: Code created by Jest, should be working correctly.
 window.matchMedia =
   window.matchMedia ||
   function () {

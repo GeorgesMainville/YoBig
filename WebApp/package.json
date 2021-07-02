@@ -46,7 +46,8 @@
     "lint": "yarn eslint && yarn prettier --check",
     "prettier": "prettier \"**/*.ts\"",
     "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint-fix": "npx prettier --write ."
+    "lint-fix": "npx prettier --write .",
+    "type-check": "yarn tsc"
   },
   "eslintConfig": {
     "extends": [
