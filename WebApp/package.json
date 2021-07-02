@@ -45,8 +45,7 @@
     "eject": "react-scripts eject",
     "lint": "yarn eslint && yarn prettier --check",
     "prettier": "prettier \"**/*.ts\"",
-    "eslint": "eslint . --ext .ts --ext .tsx",
-    "lint-fix": "npx prettier --write .",
+    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "type-check": "yarn tsc"
   },
   "eslintConfig": {
