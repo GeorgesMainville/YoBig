@@ -6,8 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
-        dir: ./WebApp
+        working-directory: ./WebApp
         run: yarn
       - name: Run ESlint
-        dir: ./WebApp
+        working-directory: ./WebApp
         run: yarn eslint
