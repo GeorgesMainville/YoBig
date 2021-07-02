@@ -1,4 +1,4 @@
-name: Run type check
+name: Run Type-Check
 on: [pull_request]
 jobs:
   build:
