@@ -1,5 +1,5 @@
 name: Run Linter
-on: pull
+on: push
 jobs:
   build:
     runs-on: ubuntu-latest
