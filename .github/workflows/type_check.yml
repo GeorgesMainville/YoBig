@@ -12,6 +12,6 @@ jobs:
       - name: Install modules
         working-directory: ./WebApp
         run: yarn
-      - name: Run ESlint
+      - name: Run TypeCheck
         working-directory: ./WebApp
         run: yarn type-check
