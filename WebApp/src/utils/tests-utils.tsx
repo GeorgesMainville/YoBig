@@ -19,7 +19,7 @@ const customRender = (
 
 function customFormattedMessage(id: string): string {
   const translations: any = i18n.get(DEFAULT_LANGUAGE);
-  return flattenMessages(tranlations)[id];
+  return flattenMessages(translations)[id];
 }
 
 export * from '@testing-library/react';

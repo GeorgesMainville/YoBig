@@ -1,0 +1,13 @@
+name: Run Linter
+on: pull
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        dir: ./WebApp
+        run: yarn
+      - name: Run ESlint
+        dir: ./WebApp
+        run: yarn eslint
