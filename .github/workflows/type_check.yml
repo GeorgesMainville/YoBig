@@ -1,16 +1,13 @@
-name: Run Tests
+name: Run Type-Check
 on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./WebApp
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
         working-directory: ./WebApp
         run: yarn
-      - name: Run tests
+      - name: Run TypeCheck
         working-directory: ./WebApp
-        run: yarn test
+        run: yarn type-check
